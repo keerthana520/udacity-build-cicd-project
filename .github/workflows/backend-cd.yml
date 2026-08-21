@@ -23,7 +23,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.8'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -47,7 +47,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.8'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -113,7 +113,6 @@ jobs:
       - name: Update image
         run: |
           cd starter/backend/k8s
-          kubectl kustomize . > /tmp/backend-kustomization.yaml
           sed -i "s|image:.*|image: 638209931049.dkr.ecr.us-east-1.amazonaws.com/mp-backend:${{ github.sha }}|" deployment.yaml
 
       - name: Deploy
