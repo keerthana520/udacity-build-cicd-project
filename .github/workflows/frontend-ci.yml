@@ -85,3 +85,9 @@ jobs:
 
       - name: Build application
         run: npm run build
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            --build-arg=REACT_APP_MOVIE_API_URL=http://backend \
+            --tag=mp-frontend:ci .
