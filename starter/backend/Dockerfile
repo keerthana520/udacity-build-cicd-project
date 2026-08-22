@@ -10,8 +10,8 @@ COPY Pipfile Pipfile.lock ./
 
 RUN pipenv install --system --deploy
 
-COPY . /app
+COPY . /app/backend
 
 RUN mkdir -p /var/www/app
 
-CMD ["uwsgi", "--http", ":5000", "--master", "--enable-threads", "-s", "/var/www/app/app.sock", "--manage-script-name", "--mount", "/=__init__:app"]
+CMD ["uwsgi", "--http", ":5000", "--master", "--enable-threads", "-s", "/var/www/app/app.sock", "--manage-script-name", "--mount", "/=backend:app"]
